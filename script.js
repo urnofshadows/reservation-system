@@ -184,8 +184,8 @@ class ReservationSystem {
                 this.validateUserCode();
             }
             
-            // Only allow numbers
-            if (!/\d/.test(e.key) && !['Backspace', 'Delete', 'Tab', 'Enter'].includes(e.key)) {
+            // Allow letters, numbers, and dots
+            if (!/[a-zA-Z0-9.]/.test(e.key) && !['Backspace', 'Delete', 'Tab', 'Enter'].includes(e.key)) {
                 e.preventDefault();
             }
         });
@@ -232,8 +232,8 @@ class ReservationSystem {
         const userCode = document.getElementById('user-code').value.trim();
         const messageDiv = document.getElementById('message');
         
-        if (userCode.length !== 12) {
-            this.showMessage('Lütfen 12 haneli bir kod giriniz.', 'error');
+        if (userCode.length === 0 || userCode.length > 12) {
+            this.showMessage('Lütfen 1-12 karakter arası bir kod giriniz.', 'error');
             return;
         }
         

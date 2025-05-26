@@ -163,8 +163,8 @@ app.post('/api/admin/users/add', (req, res) => {
   try {
     const { userCode } = req.body;
     
-    if (!userCode || userCode.length !== 12) {
-      return res.json({ success: false, message: 'Kullanıcı kodu 12 haneli olmalıdır.' });
+    if (!userCode || userCode.length === 0 || userCode.length > 12) {
+      return res.json({ success: false, message: 'Kullanıcı kodu 1-12 karakter arası olmalıdır.' });
     }
     
     const usersData = fs.readFileSync('users.json', 'utf8');

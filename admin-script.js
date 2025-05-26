@@ -78,15 +78,15 @@ class AdminDashboard {
             }
         });
         
-        // Validate user code input (numbers only)
+        // Validate user code input (letters, numbers, and dots)
         document.getElementById('new-user-code').addEventListener('keypress', (e) => {
-            if (!/\d/.test(e.key) && !['Backspace', 'Delete', 'Tab', 'Enter'].includes(e.key)) {
+            if (!/[a-zA-Z0-9.]/.test(e.key) && !['Backspace', 'Delete', 'Tab', 'Enter'].includes(e.key)) {
                 e.preventDefault();
             }
         });
         
         document.getElementById('edit-user-code').addEventListener('keypress', (e) => {
-            if (!/\d/.test(e.key) && !['Backspace', 'Delete', 'Tab', 'Enter'].includes(e.key)) {
+            if (!/[a-zA-Z0-9.]/.test(e.key) && !['Backspace', 'Delete', 'Tab', 'Enter'].includes(e.key)) {
                 e.preventDefault();
             }
         });
@@ -211,8 +211,8 @@ class AdminDashboard {
             timestamp: this.reservations[this.currentEditIndex].timestamp
         };
         
-        if (editedReservation.userCode.length !== 12) {
-            this.showMessage('Kullanıcı kodu 12 haneli olmalıdır.', 'error');
+        if (editedReservation.userCode.length === 0 || editedReservation.userCode.length > 12) {
+            this.showMessage('Kullanıcı kodu 1-12 karakter arası olmalıdır.', 'error');
             return;
         }
         
@@ -277,8 +277,8 @@ class AdminDashboard {
     async addNewUser() {
         const userCode = document.getElementById('new-user-code').value.trim();
         
-        if (userCode.length !== 12) {
-            this.showMessage('Kullanıcı kodu 12 haneli olmalıdır.', 'error');
+        if (userCode.length === 0 || userCode.length > 12) {
+            this.showMessage('Kullanıcı kodu 1-12 karakter arası olmalıdır.', 'error');
             return;
         }
         
