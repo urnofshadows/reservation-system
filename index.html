@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezervasyon Sistemi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Rezervasyon Sistemi</h1>
+            <button id="admin-btn" class="admin-btn">Admin</button>
+        </div>
+        
+        <div class="calendar-section">
+            <h2>Tarih Seçin</h2>
+            <div id="calendar"></div>
+        </div>
+        
+        <div class="time-section">
+            <h2>Saat Seçin</h2>
+            <div id="time-slots"></div>
+        </div>
+        
+        <div class="reservation-summary">
+            <div id="selected-info">
+                <p>Seçilen: <span id="selected-date">Yok</span> - <span id="selected-time">Yok</span></p>
+            </div>
+            <button id="reserve-btn" disabled>Rezervasyon Yap</button>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="admin-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="admin-close">&times;</span>
+            <h2>Yönetici Girişi</h2>
+            <div class="form-group">
+                <label for="admin-username">Kullanıcı Adı:</label>
+                <input type="text" id="admin-username" placeholder="Kullanıcı adı">
+            </div>
+            <div class="form-group">
+                <label for="admin-password">Şifre:</label>
+                <input type="password" id="admin-password" placeholder="Şifre">
+            </div>
+            <div class="modal-buttons">
+                <button id="admin-login-btn">Giriş Yap</button>
+                <button id="admin-cancel-btn">İptal</button>
+            </div>
+            <div id="admin-message"></div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Kullanıcı Kodu Giriniz</h2>
+            <p>Lütfen 12 haneli kullanıcı kodunuzu giriniz:</p>
+            <input type="text" id="user-code" maxlength="12" placeholder="123456789012">
+            <div class="modal-buttons">
+                <button id="confirm-btn">Onayla</button>
+                <button id="cancel-btn">İptal</button>
+            </div>
+            <div id="message"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
